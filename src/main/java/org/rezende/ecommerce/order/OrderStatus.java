@@ -1,7 +1,7 @@
 package org.rezende.ecommerce.order;
 
 public enum OrderStatus {
-    PENDING,
+    CREATED,
     SHIPPED,
     DELIVERED
 }

@@ -6,8 +6,6 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import lombok.Data;
 import org.rezende.ecommerce.customer.Customer;
-import org.rezende.ecommerce.product.Product;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -21,5 +19,5 @@ public class Order {
     private LocalDateTime orderDate;
 
     private OrderStatus status;
-    private List<Product> products;
+    private List<OrderItem> items;
 }

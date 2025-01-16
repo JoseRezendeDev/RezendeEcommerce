@@ -1,21 +1,11 @@
 package org.rezende.ecommerce.order;
 
-import org.rezende.ecommerce.utils.LoadOrders;
-import org.springframework.stereotype.Repository;
+import org.apache.coyote.BadRequestException;
 
-import java.io.IOException;
 import java.util.List;
 
-@Repository
-public class OrderRepository {
+public interface OrderRepository {
+    List<Order> getOrders();
 
-    private final List<Order> orders;
-
-    public OrderRepository() throws IOException {
-        orders = LoadOrders.loadOrdersFromJson();
-    }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
+    Order createOrder(Order order) throws BadRequestException;
 }

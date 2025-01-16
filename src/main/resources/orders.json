@@ -7,18 +7,14 @@
     },
     "order_date": "2025-01-13T10:00:00Z",
     "status": "DELIVERED",
-    "products": [
+    "items": [
       {
-        "id": "1622b863-3e69-46aa-a674-576c417a7312",
-        "name": "laptop",
-        "quantity": 1,
-        "price": 1500.00
+        "productId": "1622b863-3e69-46aa-a674-576c417a7312",
+        "quantity": 1
       },
       {
-        "id": "7516c7b6-ae37-4961-9d9f-ade366f2bf98",
-        "name": "wireless_mouse",
-        "quantity": 1,
-        "price": 50.00
+        "productId": "7516c7b6-ae37-4961-9d9f-ade366f2bf98",
+        "quantity": 1
       }
     ]
   },
@@ -29,13 +25,11 @@
       "name": "Jane Smith"
     },
     "order_date": "2025-01-12T15:30:00Z",
-    "status": "PENDING",
-    "products": [
+    "status": "CREATED",
+    "items": [
       {
-        "id": "043fc3eb-a291-411c-b6ab-0ae010b0dce6",
-        "name": "smartphone",
-        "quantity": 2,
-        "price": 800.00
+        "productId": "043fc3eb-a291-411c-b6ab-0ae010b0dce6",
+        "quantity": 2
       }
     ]
   },
@@ -47,24 +41,18 @@
     },
     "order_date": "2025-01-11T09:15:00Z",
     "status": "SHIPPED",
-    "products": [
+    "items": [
       {
-        "id": "c879509b-063b-4cfc-9640-a344082c2242",
-        "name": "headphone",
-        "quantity": 1,
-        "price": 100.00
+        "productId": "c879509b-063b-4cfc-9640-a344082c2242",
+        "quantity": 1
       },
       {
-        "id": "12130832-22e5-4ba4-a4c8-a33602eda90b",
-        "name": "keyboard",
-        "quantity": 1,
-        "price": 70.00
+        "productId": "12130832-22e5-4ba4-a4c8-a33602eda90b",
+        "quantity": 1
       },
       {
-        "id": "7516c7b6-ae37-4961-9d9f-ade366f2bf98",
-        "name": "wireless_mouse",
-        "quantity": 2,
-        "price": 50.00
+        "productId": "7516c7b6-ae37-4961-9d9f-ade366f2bf98",
+        "quantity": 2
       }
     ]
   }
