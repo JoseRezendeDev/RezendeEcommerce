@@ -8,13 +8,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Loads data from JSON. It uses generic type.
+ *
+ * @author Jose Rezende
+ */
 public class InitialLoad {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
     public static <T> List<T> loadFromJson(String path, Class<T> tClass) throws IOException {
         // This is needed because readValue cannot inference
-        // object type of a list of T since it is generic
+        // object type of list of T since it is generic
         CollectionType listType = objectMapper.getTypeFactory()
                 .constructCollectionType(ArrayList.class, tClass);
 

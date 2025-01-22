@@ -6,6 +6,7 @@ import org.rezende.ecommerce.order.dto.CreateOrderRequestDTO;
 import org.rezende.ecommerce.product.Product;
 import org.rezende.ecommerce.product.ProductService;
 import org.rezende.ecommerce.product.dto.ProductDTO;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -17,11 +18,17 @@ public class OrderService {
     private final CustomerService customerService;
     private final ProductService productService;
 
+    @Value("${config.jose.my-test}")
+    private String joseConfig;
+
     public OrderService(OrderRepository orderRepository, CustomerService customerService, ProductService productService) {
+
         this.orderRepository = orderRepository;
         this.customerService = customerService;
         this.productService = productService;
     }
+
+    // TODO Call 3rd party API
 
     public List<Order> getOrders() {
         return orderRepository.getOrders();

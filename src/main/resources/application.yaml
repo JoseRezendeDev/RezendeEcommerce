@@ -1,0 +1,3 @@
+config:
+  jose:
+    my-test: "The externalized configuration test works"
