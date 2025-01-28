@@ -1,3 +1,16 @@
 config:
   jose:
     my-test: "The externalized configuration test works"
+
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:5455/postgresDB"
+    username: "rezende"
+    password: "123456"
+  jpa:
+    generate-ddl: "true"
+    hibernate:
+      ddl-auto: "create-drop"
+    properties:
+      hibernate:
+        dialect: "org.hibernate.dialect.PostgreSQLDialect"

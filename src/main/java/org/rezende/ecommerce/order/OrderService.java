@@ -6,9 +6,11 @@ import org.rezende.ecommerce.order.dto.CreateOrderRequestDTO;
 import org.rezende.ecommerce.product.Product;
 import org.rezende.ecommerce.product.ProductService;
 import org.rezende.ecommerce.product.dto.ProductDTO;
+import org.rezende.ecommerce.utils.InitialLoad;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -21,17 +23,20 @@ public class OrderService {
     @Value("${config.jose.my-test}")
     private String joseConfig;
 
-    public OrderService(OrderRepository orderRepository, CustomerService customerService, ProductService productService) {
-
+    public OrderService(OrderRepository orderRepository, CustomerService customerService, ProductService productService) throws IOException {
         this.orderRepository = orderRepository;
         this.customerService = customerService;
         this.productService = productService;
+
+        // TODO Fix initial load
+        List<Order> orders = InitialLoad.loadFromJson("src/main/resources/orders.json", Order.class);
+//        orderRepository.saveAll(orders);
     }
 
     // TODO Call 3rd party API
 
     public List<Order> getOrders() {
-        return orderRepository.getOrders();
+        return orderRepository.findAll();
     }
 
     public Order createOrder(CreateOrderRequestDTO createOrderRequestDTO) throws BadRequestException {
@@ -41,7 +46,7 @@ public class OrderService {
 
         Order order = createOrderFromRequest(createOrderRequestDTO);
 
-        return orderRepository.createOrder(order);
+        return orderRepository.save(order);
     }
 
     private Order createOrderFromRequest(CreateOrderRequestDTO createOrderRequestDTO) throws BadRequestException {
@@ -50,7 +55,7 @@ public class OrderService {
         order.setStatus(OrderStatus.CREATED);
         order.setCustomer(customerService.getCustomerById(createOrderRequestDTO.getCustomerId()));
         order.setItems(createOrderRequestDTO.getProducts().stream().map(this::productDTOToOrderItem).toList());
-        return orderRepository.createOrder(order);
+        return orderRepository.save(order);
     }
 
     private void checkAvailabilityInStock(List<ProductDTO> productDTOS) {

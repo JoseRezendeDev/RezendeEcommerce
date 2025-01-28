@@ -1,11 +1,9 @@
 package org.rezende.ecommerce.order;
 
-import org.apache.coyote.BadRequestException;
+import org.springframework.data.repository.ListCrudRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
+@Repository
+public interface OrderRepository extends ListCrudRepository<Order, Long> {
 
-public interface OrderRepository {
-    List<Order> getOrders();
-
-    Order createOrder(Order order) throws BadRequestException;
 }

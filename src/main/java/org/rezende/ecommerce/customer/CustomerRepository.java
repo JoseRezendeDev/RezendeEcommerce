@@ -1,9 +1,9 @@
 package org.rezende.ecommerce.customer;
 
-import java.util.List;
+import org.springframework.data.repository.ListCrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface CustomerRepository {
-    List<Customer> getCustomers();
+@Repository
+public interface CustomerRepository extends ListCrudRepository<Customer, String> {
 
-    Customer getCustomerById(String id);
 }
