@@ -8,6 +8,9 @@ For now, the API exposes endpoints to create and get orders.
 
 It uses Spring Data JPA with Hibernate, Postgres database, Lombok and Maven.
 
+Postgres database I run locally in a Docker container with the following command:
+`docker run --name rezendeDb -p 5455:5432 -e POSTGRES_USER=rezende -e POSTGRES_PASSWORD=123456 -e POSTGRES_DB=postgresDB -d postgres`
+
 The configuration is externalized on application.yaml file.
 
 Next steps:
