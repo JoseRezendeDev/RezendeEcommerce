@@ -1,57 +1,63 @@
 [
   {
-    "id": 1,
     "customer": {
-      "id": "891740aa-759d-41ee-985d-059594a2fdff",
       "name": "John Doe"
     },
     "order_date": "2025-01-13T10:00:00Z",
     "status": "DELIVERED",
     "items": [
       {
-        "productId": "1622b863-3e69-46aa-a674-576c417a7312",
+        "product": {
+          "name": "laptop"
+        },
         "quantity": 1
       },
       {
-        "productId": "7516c7b6-ae37-4961-9d9f-ade366f2bf98",
+        "product": {
+          "name": "wireless_mouse"
+        },
         "quantity": 1
       }
     ]
   },
   {
-    "id": 2,
     "customer": {
-      "id": "01006f33-9c07-4905-a0ba-3d2835737d16",
       "name": "Jane Smith"
     },
     "order_date": "2025-01-12T15:30:00Z",
     "status": "CREATED",
     "items": [
       {
-        "productId": "043fc3eb-a291-411c-b6ab-0ae010b0dce6",
+        "product": {
+          "name": "laptop"
+        },
         "quantity": 2
       }
     ]
   },
   {
-    "id": 3,
     "customer": {
-      "id": "c7338d1e-82dd-4958-98f2-ef9a68fdf093",
       "name": "Alice Johnson"
     },
     "order_date": "2025-01-11T09:15:00Z",
     "status": "SHIPPED",
     "items": [
       {
-        "productId": "c879509b-063b-4cfc-9640-a344082c2242",
+        "product": {
+          "name": "laptop"
+        },
         "quantity": 1
       },
       {
-        "productId": "12130832-22e5-4ba4-a4c8-a33602eda90b",
+        "product": {
+          "name": "smartphone"
+        },
         "quantity": 1
       },
       {
-        "productId": "7516c7b6-ae37-4961-9d9f-ade366f2bf98",
+        "product": {
+          "name": "keyboard"
+        },
         "quantity": 2
       }
     ]

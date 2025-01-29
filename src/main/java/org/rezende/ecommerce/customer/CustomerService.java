@@ -13,9 +13,8 @@ public class CustomerService {
 
     public CustomerService(CustomerRepository customerRepository) throws IOException {
         this.customerRepository = customerRepository;
-        // TODO Fix initial load
         List<Customer> customers = InitialLoad.loadFromJson("src/main/resources/customers.json", Customer.class);
-//        customerRepository.saveAll(customers);
+        customerRepository.saveAll(customers);
     }
 
     public List<Customer> getCustomers() {
@@ -23,6 +22,11 @@ public class CustomerService {
     }
 
     public Customer getCustomerById(String id) {
-        return customerRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Customer not found"));
+        return customerRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Customer not found!"));
+    }
+
+    public Customer getCustomerByName(String name) {
+        return customerRepository.findByName(name);
     }
 }

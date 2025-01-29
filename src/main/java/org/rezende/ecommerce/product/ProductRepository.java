@@ -1,9 +1,9 @@
 package org.rezende.ecommerce.product;
 
-import java.util.List;
+import org.springframework.data.repository.ListCrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ProductRepository {
-    List<Product> getProducts();
-
-    Product getProductById(String id);
+@Repository
+public interface ProductRepository extends ListCrudRepository<Product, String> {
+    Product findByName(String name);
 }

@@ -1,8 +1,11 @@
 package org.rezende.ecommerce.order;
 
 import org.apache.coyote.BadRequestException;
+import org.rezende.ecommerce.customer.Customer;
 import org.rezende.ecommerce.customer.CustomerService;
 import org.rezende.ecommerce.order.dto.CreateOrderRequestDTO;
+import org.rezende.ecommerce.order.orderitem.OrderItem;
+import org.rezende.ecommerce.order.orderitem.OrderItemRepository;
 import org.rezende.ecommerce.product.Product;
 import org.rezende.ecommerce.product.ProductService;
 import org.rezende.ecommerce.product.dto.ProductDTO;
@@ -17,20 +20,43 @@ import java.util.List;
 @Service
 public class OrderService {
     private final OrderRepository orderRepository;
+    private final OrderItemRepository orderItemRepository;
     private final CustomerService customerService;
     private final ProductService productService;
 
     @Value("${config.jose.my-test}")
     private String joseConfig;
 
-    public OrderService(OrderRepository orderRepository, CustomerService customerService, ProductService productService) throws IOException {
+    public OrderService(OrderRepository orderRepository, OrderItemRepository orderItemRepository, CustomerService customerService, ProductService productService) throws IOException {
         this.orderRepository = orderRepository;
+        this.orderItemRepository = orderItemRepository;
         this.customerService = customerService;
         this.productService = productService;
 
-        // TODO Fix initial load
+        loadOrders();
+    }
+
+    private void loadOrders() throws IOException {
         List<Order> orders = InitialLoad.loadFromJson("src/main/resources/orders.json", Order.class);
-//        orderRepository.saveAll(orders);
+        setCustomers(orders);
+        setOrderItems(orders);
+        orderRepository.saveAll(orders);
+        orderItemRepository.saveAll(orders.stream().flatMap(order -> order.getItems().stream()).toList());
+    }
+
+    private void setOrderItems(List<Order> orders) {
+        orders.forEach(order -> order.getItems().forEach(orderItem -> {
+            Product product = productService.getProductByName(orderItem.getProduct().getName());
+            orderItem.setProduct(product);
+            orderItem.setOrder(order);
+        }));
+    }
+
+    private void setCustomers(List<Order> orders) {
+        orders.forEach(order -> {
+            Customer customer = customerService.getCustomerByName(order.getCustomer().getName());
+            order.setCustomer(customer);
+        });
     }
 
     // TODO Call 3rd party API
@@ -49,7 +75,7 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    private Order createOrderFromRequest(CreateOrderRequestDTO createOrderRequestDTO) throws BadRequestException {
+    private Order createOrderFromRequest(CreateOrderRequestDTO createOrderRequestDTO) {
         Order order = new Order();
         order.setOrderDate(LocalDateTime.now());
         order.setStatus(OrderStatus.CREATED);
@@ -71,7 +97,7 @@ public class OrderService {
 
     private OrderItem productDTOToOrderItem(ProductDTO productDTO) {
         OrderItem orderItem = new OrderItem();
-        orderItem.setProductId(productDTO.getId());
+        orderItem.setProduct(productService.getProductById(productDTO.getId()));
         orderItem.setQuantity(productDTO.getQuantity());
         return orderItem;
     }

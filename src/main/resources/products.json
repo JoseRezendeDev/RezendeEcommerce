@@ -1,38 +1,27 @@
 [
   {
-    "id": "1622b863-3e69-46aa-a674-576c417a7312",
     "name": "laptop",
     "quantity": 50,
     "price": 1500.00
   },
   {
-    "id": "7516c7b6-ae37-4961-9d9f-ade366f2bf98",
     "name": "wireless_mouse",
     "quantity": 200,
     "price": 50.00
   },
   {
-    "id": "043fc3eb-a291-411c-b6ab-0ae010b0dce6",
     "name": "smartphone",
     "quantity": 150,
     "price": 800.00
   },
   {
-    "id": "c879509b-063b-4cfc-9640-a344082c2242",
     "name": "headphone",
     "quantity": 70,
     "price": 100.00
   },
   {
-    "id": "12130832-22e5-4ba4-a4c8-a33602eda90b",
     "name": "keyboard",
     "quantity": 40,
     "price": 70.00
-  },
-  {
-    "id": "7516c7b6-ae37-4961-9d9f-ade366f2bf98",
-    "name": "wireless_mouse",
-    "quantity": 180,
-    "price": 50.00
   }
 ]

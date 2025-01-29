@@ -1,7 +1,9 @@
-package org.rezende.ecommerce.order;
+package org.rezende.ecommerce.order.orderitem;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.rezende.ecommerce.order.Order;
+import org.rezende.ecommerce.product.Product;
 
 import java.io.Serializable;
 
@@ -17,6 +19,9 @@ public class OrderItem implements Serializable {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    private String productId;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
     private int quantity;
 }

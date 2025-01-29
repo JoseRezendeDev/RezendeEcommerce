@@ -7,6 +7,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.rezende.ecommerce.customer.Customer;
+import org.rezende.ecommerce.order.orderitem.OrderItem;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Data
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-@Entity(name = "orderrr")
+@Entity(name = "customer_order")
 public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
