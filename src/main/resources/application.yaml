@@ -9,8 +9,19 @@ spring:
     password: "123456"
   jpa:
     generate-ddl: "true"
+
     hibernate:
       ddl-auto: "create-drop"
     properties:
       hibernate:
         dialect: "org.hibernate.dialect.PostgreSQLDialect"
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        # Include Actuator endpoints to monitor application
+        include: "*"
